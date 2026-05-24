@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOCKSY — дизайнерские носки</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">SOCK<span>SY</span></a>
+  <ul class="nav-links">
+    <li><a href="#catalog">Коллекции</a></li>
+    <li><a href="#how">Как это работает</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="toggleCart()">
+      🛍 Корзина
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-tag">✦ Новая коллекция 2026</span>
+    <h1>Носки с <em>характером</em></h1>
+    <p>Последняя деталь образа, которую замечают первой. Выбирай по настроению — мы привезём к двери.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">Смотреть коллекции</button>
+      <button class="btn-outline" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">Как это работает</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-blob">🧦</div>
+    <div class="floating-tag">🔥 Хит сезона</div>
+    <div class="floating-tag">Доставка за 24ч 🚀</div>
+    <div class="floating-tag">⭐ 4.9 / 5</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    <div class="marquee-item">SOCKSY <span>✦</span></div>
+    <div class="marquee-item">Бесплатная доставка от 1500₽ <span>✦</span></div>
+    <div class="marquee-item">Новый дроп каждую пятницу <span>✦</span></div>
+    <div class="marquee-item">200+ дизайнов <span>✦</span></div>
+    <div class="marquee-item">Возврат 14 дней <span>✦</span></div>
+    <div class="marquee-item">SOCKSY <span>✦</span></div>
+    <div class="marquee-item">Бесплатная доставка от 1500₽ <span>✦</span></div>
+    <div class="marquee-item">Новый дроп каждую пятницу <span>✦</span></div>
+    <div class="marquee-item">200+ дизайнов <span>✦</span></div>
+    <div class="marquee-item">Возврат 14 дней <span>✦</span></div>
+  </div>
+</div>
+
+<!-- MOODS -->
+<section class="section" id="moods">
+  <div class="section-label">Навигация по настроению</div>
+  <div class="section-title">Выбери своё<br>настроение</div>
+  <div class="moods-grid">
+    <div class="mood-card active" onclick="filterMood('дерзкий', this)">
+      <div class="mood-count">47 пар</div>
+      <div class="mood-emoji">🔥</div>
+      <div class="mood-name">Дерзкий</div>
+      <div class="mood-desc">Яркие принты, громкие заявления, максимум энергии</div>
+    </div>
+    <div class="mood-card" onclick="filterMood('минималист', this)">
+      <div class="mood-count">63 пары</div>
+      <div class="mood-emoji">⬛</div>
+      <div class="mood-name">Минималист</div>
+      <div class="mood-desc">Чисто, строго, без лишнего. Детали говорят сами</div>
+    </div>
+    <div class="mood-card" onclick="filterMood('уютный', this)">
+      <div class="mood-count">38 пар</div>
+      <div class="mood-emoji">🧸</div>
+      <div class="mood-name">Уютный</div>
+      <div class="mood-desc">Мягкие цвета, тёплые принты, для диванных вечеров</div>
+    </div>
+    <div class="mood-card" onclick="filterMood('абсурдный', this)">
+      <div class="mood-count">29 пар</div>
+      <div class="mood-emoji">🌀</div>
+      <div class="mood-name">Абсурдный</div>
+      <div class="mood-desc">Авокадо, коты, пицца. Не спрашивай — просто носи</div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="section" id="catalog" style="padding-top: 0;">
+  <div class="catalog-header">
+    <div>
+      <div class="section-label">Каталог</div>
+      <div class="section-title">Все коллекции</div>
+    </div>
+  </div>
+
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section steps" id="how">
+  <div class="section-label">Процесс заказа</div>
+  <div class="section-title">Три шага.<br>Ноль раздражения.</div>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-icon">🎯</div>
+      <h3>Нашёл</h3>
+      <p>Фильтруй по настроению или ищи по тегам. Live-поиск без перезагрузок — результат за секунду.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-icon">😍</div>
+      <h3>Влюбился</h3>
+      <p>Фото в реальных образах, состав ткани, ощущения — всё честно. Без студийного белого фона.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-icon">🚀</div>
+      <h3>Заказал</h3>
+      <p>Без обязательной регистрации. Корзина → адрес → оплата. Доставка 24–48 часов.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section" id="reviews">
+  <div class="section-label">Отзывы</div>
+  <div class="section-title">Говорят покупатели</div>
+  <div class="reviews-carousel">
+    <div class="reviews-track">
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">«Заказала коллекцию с котами — пришла за день. Качество огонь, муж уже украл пару пар из "кошачьего"»</p>
+        <div class="review-author">
+          <div class="review-avatar">🙋‍♀️</div>
+          <div><div class="review-name">Аня К.</div><div class="review-sub">14 заказов</div></div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">«Наконец магазин, где можно найти нормальные носки без регистрации и 10 шагов оформления. Уважаю.»</p>
+        <div class="review-author">
+          <div class="review-avatar">🙍‍♂️</div>
+          <div><div class="review-name">Максим Р.</div><div class="review-sub">7 заказов</div></div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">«Подарила другу набор "Абсурдный" — он носит носки с пиццей на важные встречи. Говорит, помогает.»</p>
+        <div class="review-author">
+          <div class="review-avatar">👩‍🎨</div>
+          <div><div class="review-name">Вика Д.</div><div class="review-sub">23 заказа</div></div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">«Дизайны реально уникальные — в офисе все спрашивают где взял. Покупаю раз в месяц стабильно.»</p>
+        <div class="review-author">
+          <div class="review-avatar">🧑‍💻</div>
+          <div><div class="review-name">Дима В.</div><div class="review-sub">31 заказ</div></div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">«Взяла набор "Уютный" в подарок — открыли коробку и сразу влюбились. Упаковка тоже супер.»</p>
+        <div class="review-author">
+          <div class="review-avatar">🌸</div>
+          <div><div class="review-name">Соня М.</div><div class="review-sub">9 заказов</div></div>
+        </div>
+      </div>
+      <!-- duplicate for seamless loop -->
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">«Заказала коллекцию с котами — пришла за день. Качество огонь, муж уже украл пару пар из "кошачьего"»</p>
+        <div class="review-author">
+          <div class="review-avatar">🙋‍♀️</div>
+          <div><div class="review-name">Аня К.</div><div class="review-sub">14 заказов</div></div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">«Наконец магазин, где можно найти нормальные носки без регистрации и 10 шагов оформления. Уважаю.»</p>
+        <div class="review-author">
+          <div class="review-avatar">🙍‍♂️</div>
+          <div><div class="review-name">Максим Р.</div><div class="review-sub">7 заказов</div></div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">«Подарила другу набор "Абсурдный" — он носит носки с пиццей на важные встречи. Говорит, помогает.»</p>
+        <div class="review-author">
+          <div class="review-avatar">👩‍🎨</div>
+          <div><div class="review-name">Вика Д.</div><div class="review-sub">23 заказа</div></div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">«Дизайны реально уникальные — в офисе все спрашивают где взял. Покупаю раз в месяц стабильно.»</p>
+        <div class="review-author">
+          <div class="review-avatar">🧑‍💻</div>
+          <div><div class="review-name">Дима В.</div><div class="review-sub">31 заказ</div></div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">«Взяла набор "Уютный" в подарок — открыли коробку и сразу влюбились. Упаковка тоже супер.»</p>
+        <div class="review-author">
+          <div class="review-avatar">🌸</div>
+          <div><div class="review-name">Соня М.</div><div class="review-sub">9 заказов</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <!-- Newsletter -->
+  <div class="footer-newsletter">
+    <div>
+      <div class="footer-nl-title">Новый дроп<br>каждую <span>пятницу</span></div>
+      <div class="footer-nl-sub">Подпишись — узнай первым, пока размеры есть</div>
+    </div>
+    <div>
+      <div class="footer-nl-form">
+        <input class="footer-nl-input" type="email" placeholder="твой@email.com" id="nlInput" />
+        <button class="footer-nl-btn" onclick="subscribeNewsletter()">Подписаться</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="footer-stats">
+    <div class="footer-stat">
+      <div class="footer-stat-num">200+</div>
+      <div class="footer-stat-label">уникальных дизайнов</div>
+    </div>
+    <div class="footer-stat">
+      <div class="footer-stat-num">24ч</div>
+      <div class="footer-stat-label">среднее время доставки</div>
+    </div>
+    <div class="footer-stat">
+      <div class="footer-stat-num">4.9</div>
+      <div class="footer-stat-label">средний рейтинг</div>
+    </div>
+    <div class="footer-stat">
+      <div class="footer-stat-num">14</div>
+      <div class="footer-stat-label">дней на возврат</div>
+    </div>
+  </div>
+
+  <!-- Main links -->
+  <div class="footer-main">
+    <div class="footer-brand">
+      <span class="footer-logo">SOCK<span>SY</span></span>
+      <p class="footer-desc">Носки с характером. Каждая пара — маленькое высказывание о том, кто ты есть.</p>
+      <div class="footer-socials">
+        <a class="social-btn tg" href="https://telegram.org" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          Telegram
+        </a>
+        <a class="social-btn ig" href="https://instagram.com" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          Instagram
+        </a>
+        <a class="social-btn tt" href="https://tiktok.com/@socksy" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/></svg>
+          TikTok
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Магазин</h4>
+      <ul>
+        <li><a onclick="scrollTo('catalog')">Все коллекции</a></li>
+        <li><a onclick="scrollTo('catalog')">Новинки</a></li>
+        <li><a onclick="scrollTo('moods')">Дропы по настроению</a></li>
+        <li><a onclick="scrollTo('catalog')">Подарочные наборы</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Помощь</h4>
+      <ul>
+        <li><a onclick="openInfo('delivery')">Доставка и оплата</a></li>
+        <li><a onclick="openInfo('return')">Возврат</a></li>
+        <li><a onclick="openInfo('sizes')">Таблица размеров</a></li>
+        <li><a onclick="openInfo('faq')">FAQ</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>О бренде</h4>
+      <ul>
+        <li><a onclick="scrollTo('how')">Как это работает</a></li>
+        <li><a onclick="scrollTo('reviews')">Отзывы</a></li>
+        <li><a onclick="scrollTo('moods')">Наши настроения</a></li>
+        <li><a onclick="openInfo('about')">О нас</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 SOCKSY. Все права защищены.</span>
+    <div class="footer-bottom-right">
+      <a onclick="openInfo('privacy')">Политика конфиденциальности</a>
+      <a onclick="openInfo('terms')">Условия использования</a>
+    </div>
+  </div>
+</footer>
+
+<!-- INFO MODAL -->
+<div class="info-modal-overlay" id="infoModalOverlay" onclick="closeInfoOutside(event)">
+  <div class="info-modal" id="infoModal">
+    <button class="info-modal-close" onclick="closeInfo()">✕</button>
+    <div id="infoModalContent"></div>
+  </div>
+</div>
+
+<!-- DELIVERY FORM MODAL -->
+<div class="delivery-overlay" id="deliveryOverlay" onclick="closeDeliveryOutside(event)">
+  <div class="delivery-modal">
+    <div class="delivery-header">
+      <div class="delivery-title">📍 Куда доставить?</div>
+      <button class="delivery-close" onclick="closeDelivery()">✕</button>
+    </div>
+    <div class="delivery-form-body">
+      <div class="delivery-form-grid">
+        <div class="delivery-field delivery-field--full">
+          <label class="delivery-label">Город</label>
+          <input class="delivery-input" id="dCity" type="text" placeholder="Москва" oninput="updateDeliveryBtn()" />
+        </div>
+        <div class="delivery-field">
+          <label class="delivery-label">Улица</label>
+          <input class="delivery-input" id="dStreet" type="text" placeholder="ул. Арбат" oninput="updateDeliveryBtn()" />
+        </div>
+        <div class="delivery-field">
+          <label class="delivery-label">Дом</label>
+          <input class="delivery-input" id="dHouse" type="text" placeholder="12" oninput="updateDeliveryBtn()" />
+        </div>
+        <div class="delivery-field">
+          <label class="delivery-label">Квартира / офис</label>
+          <input class="delivery-input" id="dFlat" type="text" placeholder="34" />
+        </div>
+        <div class="delivery-field">
+          <label class="delivery-label">Подъезд</label>
+          <input class="delivery-input" id="dEntrance" type="text" placeholder="2" />
+        </div>
+      </div>
+      <div class="delivery-options">
+        <div class="delivery-option active" onclick="selectDelivery(this, 'standard')">
+          <div class="delivery-option-icon">🚚</div>
+          <div class="delivery-option-info">
+            <div class="delivery-option-name">Стандартная</div>
+            <div class="delivery-option-desc">2–4 дня · 299 ₽</div>
+          </div>
+        </div>
+        <div class="delivery-option" onclick="selectDelivery(this, 'express')">
+          <div class="delivery-option-icon">⚡</div>
+          <div class="delivery-option-info">
+            <div class="delivery-option-name">Экспресс</div>
+            <div class="delivery-option-desc">1 день · 499 ₽</div>
+          </div>
+        </div>
+        <div class="delivery-option" onclick="selectDelivery(this, 'pickup')">
+          <div class="delivery-option-icon">🏪</div>
+          <div class="delivery-option-info">
+            <div class="delivery-option-name">Самовывоз</div>
+            <div class="delivery-option-desc">Бесплатно</div>
+          </div>
+        </div>
+      </div>
+      <button class="delivery-confirm-btn" id="deliveryConfirmBtn" onclick="confirmDelivery()">
+        Подтвердить адрес и оплатить →
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CART PANEL -->
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h2>Корзина 🛍</h2>
+    <button class="close-btn" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total">
+      <span>Итого</span>
+      <span id="cartTotal">0 ₽</span>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">Оформить заказ →</button>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <button class="modal-close" onclick="closeModal()">✕</button>
+  <div class="modal" id="modal">
+    <div class="modal-img">
+      <img id="modalImg" src="" alt="" loading="lazy" />
+    </div>
+    <div class="modal-body">
+      <div class="modal-badge-row" id="modalBadges"></div>
+      <div class="modal-name" id="modalName"></div>
+      <div class="modal-price" id="modalPrice"></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-specs" id="modalSpecs"></div>
+      <div class="size-row">
+        <div class="size-label">Размер</div>
+        <div class="size-btns">
+          <button class="size-btn active" onclick="selectSize(this)">36–38</button>
+          <button class="size-btn" onclick="selectSize(this)">39–41</button>
+          <button class="size-btn" onclick="selectSize(this)">42–44</button>
+          <button class="size-btn" onclick="selectSize(this)">45–47</button>
+        </div>
+      </div>
+      <button class="modal-add-btn" id="modalAddBtn" onclick="addFromModal()"></button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
