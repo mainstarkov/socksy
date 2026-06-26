@@ -2,6 +2,8 @@
 
 **SOCKSY** — дизайнерские носки с характером.
 
+**Demo:** [mainstarkov.github.io/socksy](https://mainstarkov.github.io/socksy/)
+
 Полноценный интерактивный лендинг для портфолио.
 
 ## Фишки
