@@ -212,7 +212,7 @@ function checkout() {
   openDelivery();
 }
 
-/* ── DELIVERY FORM ── */
+// Форма доставки
 let selectedDeliveryType = 'standard';
 
 function openDelivery() {
